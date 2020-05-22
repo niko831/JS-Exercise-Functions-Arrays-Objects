@@ -279,8 +279,9 @@ function getModelYears(years) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
+function getCarInfoById(array, id) {
   /* code here */
+  return `This is a ${array[id - 1].car_make} ${array[id -1].car_model}`
 }
 
 /**
@@ -297,8 +298,15 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
+function getOlderCars(array, maxYear) {
   /* code here */
+  let newArray = [];
+  for (i = 0; i < array.length; i++){
+    if (array[i].car_year < maxYear){
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
 }
 
 /**
@@ -314,8 +322,21 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
+function getGermanCars(array) {
   /* code here */
+  let germanCars = [];
+  for (i = 0; i < array.length; i++){
+    if (array[i].car_make === "Audi"){
+      germanCars.push(array[i]);
+    } else if (array[i].car_make === "Mercedes-Benz"){
+      germanCars.push(array[i]);
+    } else if (array[i].car_make === "Volkswagen"){
+      germanCars.push(array[i]);
+    } else if (array[i].car_make === "BMW"){
+      germanCars.push(array[i]);
+    }
+  }
+  return germanCars;
 }
 
 /**
@@ -331,8 +352,14 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
+function carMaker(num) {
   /* code here */
+  let car = {
+    odometer: num,
+    drive: function (distance){
+      return distance + this.odometer;
+    }
+  }
 }
 
 /// ////// END OF CHALLENGE /////////
